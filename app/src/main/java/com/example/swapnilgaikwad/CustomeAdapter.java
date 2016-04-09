@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.swapnilgaikwad.listviewdemo.R;
 import com.example.swapnilgaikwad.model.Person;
@@ -48,20 +49,26 @@ public class CustomeAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.list_element, parent, false);
         }
 
-        PersonHolder personHolder = new PersonHolder(convertView , person);
+//        TextView ageView = (TextView) convertView.findViewById(R.id.age_id);
+//        ageView.setText(person.getAge() + "");
+//
+//        TextView nameView = (TextView) convertView.findViewById(R.id.name_id);
+//        nameView.setText(person.getName() + "");
+
+        setPersonDataToUI(convertView , person);
 
         return convertView;
     }
 
-    class PersonHolder {
-        private TextView age;
-        private TextView name;
+    private void setPersonDataToUI(View convertView, Person person) {
+        TextView age;
+        TextView name;
 
-        public PersonHolder(View convertView, Person person) {
-            age = (TextView) convertView.findViewById(R.id.age_id);
-            age.setText(person.getAge());
-            name = (TextView) convertView.findViewById(R.id.name_id);
-            name.setText(person.getName());
-        }
+        age = (TextView) convertView.findViewById(R.id.age_id);
+        age.setText(person.getAge() + "");
+        name = (TextView) convertView.findViewById(R.id.name_id);
+        name.setText(person.getName());
     }
+
+
 }
